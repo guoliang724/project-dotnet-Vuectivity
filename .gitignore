@@ -134,3 +134,7 @@ coverage*.xml
 # Others
 *.DS_Store
 Thumbs.db
+
+API/appsettings.json
+API/reactivities.*
+.gitignore
