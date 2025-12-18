@@ -11,10 +11,12 @@ builder.Services.AddDbContext<AppDbContext>(option =>
 {
   option.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-
+builder.Services.AddCors();
 
 var app = builder.Build();
 
+
+app.UseCors(x => x.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
 
 app.MapControllers();
 
