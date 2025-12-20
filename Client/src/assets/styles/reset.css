@@ -1,0 +1,32 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: #fff;
+  color: #333;
+}
+
+/* 消除 a 标签默认样式，包括 chrome a:-webkit-any-link */
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 图片自适应容器 */
+img {
+  max-width: 100%;
+  display: block;
+}
