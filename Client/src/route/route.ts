@@ -4,7 +4,7 @@ import {
   type RouteRecordRaw,
 } from "vue-router";
 
-import Activity from "../components/Activity.vue";
+import Activity from "../components/Activity/index.vue";
 import Home from "../components/Home.vue";
 
 const routes: Array<RouteRecordRaw> = [

@@ -1,5 +1,5 @@
 <template>
-  <div>activities</div>
+  <div>details</div>
 </template>
 
 <script setup lang="ts"></script>
