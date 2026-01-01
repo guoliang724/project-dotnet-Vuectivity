@@ -11,6 +11,7 @@
   "dependencies": {
     "@fontsource/roboto": "^5.2.9",
     "@mdi/font": "^7.4.47",
+    "@tanstack/vue-query": "^5.92.5",
     "axios": "^1.13.2",
     "pinia": "^3.0.4",
     "vue": "^3.5.24",

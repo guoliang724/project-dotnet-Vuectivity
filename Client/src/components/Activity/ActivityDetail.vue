@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mt-5" width="400px" variant="elevated" v-if="activity">
+  <v-card width="400px" variant="elevated" v-if="activity">
     <v-img
       height="300px"
       cover
@@ -9,16 +9,29 @@
     <v-card-subtitle>{{ activity.date }}</v-card-subtitle>
     <v-card-text>{{ activity.description }}</v-card-text>
     <v-card-actions>
-      <v-btn variant="elevated" color="primary">Edit</v-btn>
-      <v-btn variant="flat" color="secondary">Cancel</v-btn>
+      <v-btn variant="elevated" color="primary" @click="handleEditForm"
+        >Edit</v-btn
+      >
+      <v-btn variant="flat" color="secondary" @click="handleCancelActivity"
+        >Cancel</v-btn
+      >
     </v-card-actions>
   </v-card>
-  <div v-else>sss</div>
 </template>
 
 <script setup lang="ts">
 import type { IActivity } from "../../types/activity";
+import { useActivityStore } from "@/store";
 const props = defineProps<{ activity: IActivity | null }>();
+const activityStore = useActivityStore();
+
+const handleCancelActivity = () => {
+  activityStore.clearCurrentActivity();
+};
+
+const handleEditForm = () => {
+  activityStore.setOpenEditForm();
+};
 </script>
 
 <style scoped></style>

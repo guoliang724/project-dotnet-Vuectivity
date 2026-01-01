@@ -1,28 +1,29 @@
 <template>
-  <v-list lines="two">
-    <v-list-item v-for="activity in activities" :key="activity.id">
-      <ActivityCard :activity="activity" />
-    </v-list-item>
-  </v-list>
+  <div v-if="!isLoading">
+    <v-list lines="two">
+      <v-list-item v-for="activity in activities" :key="activity.id">
+        <ActivityCard :activity="activity" />
+      </v-list-item>
+    </v-list>
+  </div>
+  <div v-else>loading</div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
-
 import { getActivityList } from "../../api/activity";
 import ActivityCard from "./ActivityCard.vue";
-import type { IActivity } from "../../types/activity";
-const activities = ref<IActivity[]>([]);
+import { useQuery } from "@tanstack/vue-query";
 
-onMounted(() => {
-  const getActivities = async () => {
-    const result = await getActivityList();
-
-    activities.value = result;
-  };
-
-  getActivities();
+const {
+  data: activities,
+  isLoading,
+  isPending,
+} = useQuery({
+  queryKey: ["activities"],
+  queryFn: getActivityList,
 });
+
+
 </script>
 
 <style scoped></style>

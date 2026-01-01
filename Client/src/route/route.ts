@@ -5,16 +5,10 @@ import {
 } from "vue-router";
 
 import Activity from "../components/Activity/index.vue";
-import Home from "../components/Home.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "Home",
-    component: Home,
-  },
-  {
-    path: "/activity",
     name: "Activity",
     component: Activity,
   },

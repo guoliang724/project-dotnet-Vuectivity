@@ -10,18 +10,31 @@
     <v-app-bar-title class="title-color">Vuetivity</v-app-bar-title>
 
     <nav class="nav-bar">
-      <router-link to="/">Home</router-link>
-      <router-link to="/activity">Activities</router-link>
+      <router-link to="/">Activities</router-link>
       <router-link to="/about">About</router-link>
       <router-link to="/contact">Contact</router-link>
     </nav>
-    <v-btn class="mr-6" color="primary" rounded="sm" variant="elevated">
+    <v-btn
+      class="mr-6"
+      color="primary"
+      rounded="sm"
+      variant="elevated"
+      @click="handleCreateActivity"
+    >
       Create Activity
     </v-btn>
   </v-app-bar>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useActivityStore } from "@/store";
+
+const activityStore = useActivityStore();
+
+const handleCreateActivity = () => {
+  activityStore.setOpenEditForm();
+};
+</script>
 
 <style lang="scss" scoped>
 .app-bar {
