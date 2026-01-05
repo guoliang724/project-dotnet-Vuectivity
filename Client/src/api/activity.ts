@@ -5,4 +5,8 @@ const getActivityList = async () => {
   return http.get<IActivity[]>("/activities");
 };
 
-export { getActivityList };
+const createActivity = async (activity: IActivity) => {
+  return http.post<IActivity>("/activities", activity);
+};
+
+export { getActivityList, createActivity };

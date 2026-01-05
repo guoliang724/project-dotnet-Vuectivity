@@ -1,12 +1,16 @@
-import axios,{type AxiosInstance} from "axios";
+import axios, { type AxiosInstance } from "axios";
 
-const request:AxiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL + '/api',
+const request: AxiosInstance = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE_URL + "/api",
   timeout: 5000,
 });
 
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 request.interceptors.request.use(
-  (config) => {
+  async (config) => {
+    await sleep(3000);
+
     const token = localStorage.getItem("token");
     if (token) {
       config.headers!.Authorization = `Bearer ${token}`;

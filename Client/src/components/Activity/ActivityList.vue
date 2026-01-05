@@ -10,20 +10,10 @@
 </template>
 
 <script setup lang="ts">
-import { getActivityList } from "../../api/activity";
 import ActivityCard from "./ActivityCard.vue";
-import { useQuery } from "@tanstack/vue-query";
+import { useActivities } from "@/hooks/useActivities";
 
-const {
-  data: activities,
-  isLoading,
-  isPending,
-} = useQuery({
-  queryKey: ["activities"],
-  queryFn: getActivityList,
-});
-
-
+const { isLoading, activities } = useActivities();
 </script>
 
 <style scoped></style>

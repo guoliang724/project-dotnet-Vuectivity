@@ -1,6 +1,7 @@
 
 
 using Application.Activities.Commands;
+using Application.Activities.DTOs;
 using Application.Activities.Queries;
 using Domain;
 using MediatR;
@@ -12,7 +13,7 @@ namespace API.Controllers
   public class ActivitiesController() : BasicController
   {
     [HttpGet]
-    public async Task<ActionResult<List<Activity>>> getActivities()
+    public async Task<ActionResult<List<Activity>>> GetActivities()
     {
       return await Mediator.Send(new GetActivityList.Query());
     }
@@ -26,9 +27,9 @@ namespace API.Controllers
 
 
     [HttpPost]
-    public async Task<ActionResult<string>> CreateActivity(Activity activity)
+    public async Task<ActionResult<string>> CreateActivity(CreateActivityDto activityDto)
     {
-      return await Mediator.Send(new CreateActivity.Command { Activity = activity });
+      return await Mediator.Send(new CreateActivity.Command { ActivityDTO = activityDto });
     }
 
     [HttpPut]
